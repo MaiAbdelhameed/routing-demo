@@ -20,16 +20,25 @@ export class DepartmentDetailsComponent {
 
   goPrevious(){
     let previousId = parseInt(this.departmentId) - 1;
-    this.router.navigate(['/department', previousId]);
+    this.router.navigate(['/departments', previousId]);
   }
   
   goNext(){
     let nextId = parseInt(this.departmentId) + 1;
-    this.router.navigate(['/department', nextId]);
+    this.router.navigate(['/departments', nextId]);
   }
 
   goToDepartmentsList(){
     let selectedId = this.departmentId ? this.departmentId : null;
-    this.router.navigate(['/department', {id: selectedId, test: 'testvalue'}])
+    // this.router.navigate(['/department', {id: selectedId, test: 'testvalue'}])
+    this.router.navigate(['../', {id: selectedId}], {relativeTo: this.route});
+  }
+
+  showOverview(){
+    this.router.navigate(['overview'], {relativeTo: this.route});
+  }
+
+  showContact(){
+    this.router.navigate(['contact'], {relativeTo: this.route});
   }
 }
